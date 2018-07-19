@@ -83,7 +83,7 @@
                     <ul>
                         <li><a href="/products">Products</a></li>
                         @foreach($product_categories->where('parent_id',null) as $product_category)
-                        <li><a href="/products/{{$product_category->slug}}">{{title_case($product_category->slug)}}</a></li>
+                        <li><a href="/products/{{$product_category->slug}}">{{title_case($product_category->name)}}</a></li>
                         @endforeach
                     </ul>
                 </nav>
