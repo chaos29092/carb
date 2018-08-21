@@ -24,7 +24,7 @@ class GalleryObserver
     {
         //        article cache deleted
         $cacheKey = 'gallery_'.$gallery->slug;
-        $cacheData = Cache::tags('gallery')->get($cacheKey);
+        $cacheData = Cache::get($cacheKey);
         if($cacheData){
             Cache::forget($cacheKey);
         }

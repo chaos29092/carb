@@ -30,7 +30,7 @@ class ArticleObserver
     {
         //        article cache deleted
         $cacheKey = 'article_'.$article->slug;
-        $cacheData = Cache::tags('article')->get($cacheKey);
+        $cacheData = Cache::get($cacheKey);
         if($cacheData){
             Cache::forget($cacheKey);
         }
