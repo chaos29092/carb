@@ -62,40 +62,33 @@
                             <div class="mediaContainer">
                                 <div class="media">
                                     @if($product->images)
-                                    @foreach(json_decode($product->images) as $product_image)
-                                    <a class="image zoom" href="{{Voyager::image($product_image)}}"
-                                       data-id="{{Voyager::image($product_image)}}" rel="product_images">
-                                        <picture>
-                                            <img src="{{Voyager::image($product_image)}}"
-                                                 data-id="{{Voyager::image($product_image)}}">
-                                        </picture>
-                                    </a>
-                                    @endforeach
+                                        @foreach(json_decode($product->images) as $product_image)
+                                            <a class="image zoom"
+                                               href="{{Voyager::image($product_image)}}"
+                                               data-id="{{Voyager::image($product_image)}}"
+                                               title="{{$product->name}}" rel="product_images"
+                                               data-zoom-content="&lt;picture class=&quot;zoomed&quot;&gt;&lt;source media=&quot;(min-width: 1200px)&quot; srcset=&quot;{{Voyager::image($product_image)}}&quot;&gt;&lt;img src=&quot;{{Voyager::image($product_image)}}&quot; srcset=&quot;{{Voyager::image($product_image)}}&quot;&gt;&lt;/picture&gt;">
+                                                <picture>
+                                                    <img src="{{Voyager::image($product_image)}}" data-id="{{Voyager::image($product_image)}}">
+                                                </picture>
+                                            </a>
+                                        @endforeach
                                     @endif
                                     <div class="zoomIcon"></div>
                                 </div>
-
                                 <div class="thumbnails image">
                                     @if($product->images)
                                         @foreach(json_decode($product->images) as $product_image)
-                                    <picture>
-                                        <img src="{{Voyager::image($product_image)}}"
-                                             data-id="{{Voyager::image($product_image)}}">
-                                    </picture>
+                                            <picture>
+                                                <img src="{{Voyager::image($product_image)}}"
+                                                     data-id="{{Voyager::image($product_image)}}"
+                                                     alt="{{$product->name}}">
+                                            </picture>
                                         @endforeach
                                     @endif
                                 </div>
                                 {{--<div class="thumbnails video">--}}
-                                    {{--<picture>--}}
-                                        {{--<img src="images/content/b8e5b2f639bad9e8ba8b5a3c9ec4b5d2.jpg"--}}
-                                             {{--data-id="https://www.youtube.com/embed/wgqNXP4Ia6w"--}}
-                                             {{--class="zoom video">--}}
-                                    {{--</picture>--}}
-                                    {{--<picture>--}}
-                                        {{--<img src="images/content/78e0ff561805404782b589b06aee0cb4.gif"--}}
-                                             {{--data-id="https://www.youtube.com/embed/o2zUJOrKMjo"--}}
-                                             {{--class="zoom video">--}}
-                                    {{--</picture>--}}
+                                {{--<picture ><source media="(min-width: 1200px)" srcset="https://www.carbolite-gero.com/imgdb/-110x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 1x, https://www.carbolite-gero.com/imgdb/-220x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 2x, https://www.carbolite-gero.com/imgdb/-330x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 3x"><img src="https://www.carbolite-gero.com/imgdb/-88x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg" data-id="/products/ovens/industrial-ovens/lgp-large-general-purpose-ovens/function-features/video_details/1/file_id/596619f9-e95c-4f52-93bb-7e948ac9dd60/lang/38" class="zoom video" srcset="https://www.carbolite-gero.com/imgdb/-88x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 1x, https://www.carbolite-gero.com/imgdb/-176x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 2x, https://www.carbolite-gero.com/imgdb/-264x-max/sl/1cdd0d5b1e299d59a577bcc304b90a50.jpg 3x"></picture>--}}
                                 {{--</div>--}}
                             </div>
                         </div>
