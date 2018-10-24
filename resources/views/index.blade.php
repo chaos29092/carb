@@ -56,6 +56,8 @@
     <div class="area content bg-white">
         <div class="grid-container">
             <div class="content-column grid-75 push-25 tablet-grid-75 tablet-push-25 mobile-grid-100 grid-parent">
+                @component('component.search_form')@endcomponent
+
                 <h1>{{title_case(setting('index.about_us_title'))}}</h1>
                 <div class="csc-default csc-space-after-20">
                     <div>{{setting('index.about_us_excerpt')}}</div>

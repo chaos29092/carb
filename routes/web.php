@@ -27,8 +27,6 @@ Route::get('product-tags','HomeController@product_tags');
 Route::get('sitemap.xml', 'HomeController@sitemap');
 Route::get('cache_clear','HomeController@cache_clear');
 
-//Route::post('search', 'HomeController@search');
-Route::get('search', 'HomeController@search');
 Route::get('search/results', 'HomeController@search_results');
 
 Route::group(['prefix' => 'admin'], function () {

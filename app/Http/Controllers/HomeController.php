@@ -191,27 +191,13 @@ class HomeController extends Controller
         return $sitemap->render('xml');
     }
 
-    public function search(Request $request)
-    {
-        $search_words = $request->input('search');
-        $collection = collect();
-        $products = Product::search($search_words,null,true)->select('name','slug','product_code','price','excerpt','product_category_id')->take(6)->get();
-        $product_categories = ProductCategory::all();
-
-        foreach ($products as $product){
-            $product_category = $product_categories->where('id',$product->product_category_id)->first();
-            $product_category_parent = $product_categories->where('id',$product_category->parent_id)->first();
-            $collection->push(["name"=>$product->name,"snippet"=>strip_tags($product->excerpt),"url"=>'products/'.$product_category_parent->slug.'/'.$product_category->slug.'/'.$product->slug]);
-        }
-
-        return $collection;
-    }
-
     public function search_results(Request $request)
     {
         $search_words = $request->input('search');
-        $products = Product::search($search_words,null,true)->select('name','slug','product_code','price','excerpt','product_category_id')->paginate(1);
+        $products = Product::search($search_words,null,true)->paginate(20);
+        $page = page_cache(1);
+        $page_value = $products->avg('price')*0.7;
 
-        return view('search_results',compact('search_words','products'));
+        return view('search_results',compact('search_words','products','page','page_value'));
     }
 }
